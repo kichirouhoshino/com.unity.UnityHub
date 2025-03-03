@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
   workflow_dispatch:
 jobs:
@@ -14,6 +14,8 @@ jobs:
       options: --privileged
     steps:
     - uses: actions/checkout@v4
+      with:
+          submodules: recursive
     - uses: flathub-infra/flatpak-github-actions/flatpak-builder@master
       with:
           bundle: UnityHub.flatpak
